@@ -1,0 +1,43 @@
+#import dataset
+imdb <- read.csv("...")
+
+#convert variables to numeric
+imdb$title_year <- as.numeric(imdb$title_year)
+imdb$budget <- as.numeric(imdb$budget)
+
+
+#PART A
+
+
+
+#create a dataframe with only movies made in the 1990s
+imdb_90s <- imdb[title_year < 2000 & title_year >= 1990]
+
+#count the number of movies made in the 1990s
+#and save in "output_a.txt"
+output_a.txt <- nrow(imdb_90s)
+
+
+
+#PART B
+
+
+#Calculate the mean budget of all films made in the 1990s. Round the mean to the nearest integer. 
+#and save output as "output_b.txt"
+output_b.txt <- round(mean(imdb_90s$budget), digits = 0)
+
+
+#PART C
+
+
+#Calculate the average budgets of 90s films for each genre. Round each average
+#to the closest integer and save to "output_c.txt"
+output_c.txt <- imdb_90s %>%
+  group_by(genre) %>%
+  summarise(mean_budget = round(mean(budget), digits = 0))
+
+#Arrange genres in ascending alphabetical order (i.e. the "A's" will be last).
+output_c.txt <- arrange(output_c.txt, desc(genre))
+
+#Display the genres followed by their avg. budgets in the form "comedy 19951038"
+paste(output_c.txt$genre, output_c.txt$mean_budget)
