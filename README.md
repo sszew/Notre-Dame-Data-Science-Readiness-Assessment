@@ -1,0 +1,1 @@
+# The above file contains my R code for the section "Programming: Take the Assessment in R" from Notre Dame's Data Science Readiness Assessment, which can be found on edX: https://www.edx.org/course/data-science-readiness-assessment
